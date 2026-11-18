@@ -742,15 +742,7 @@ html{overflow-x:clip;}
 <form class="access-form" id="access-form" novalidate="">
 <div aria-hidden="true" class="hp"><label for="af-hp">Lascia vuoto questo campo</label><input autocomplete="off" id="af-hp" name="hp_vuoto" tabindex="-1" type="text"/></div>
 <div class="form-progress"><span aria-live="polite" id="form-step-label">Passo 1 di 3</span><ol aria-hidden="true"><li class="on"></li><li></li><li></li></ol></div>
-<div class="form-step on">
-<div class="form-field"><label for="af-name">Come ti chiami?</label><input autocomplete="name" id="af-name" name="nome" placeholder="Nome e cognome" required="" type="text"/></div>
-<div class="form-field"><label for="af-restaurant">Nome del ristorante</label><input autocomplete="organization" id="af-restaurant" name="ristorante" placeholder="Es. Ristorante Da Mario" required="" type="text"/></div>
-</div>
-<div class="form-step">
-<div class="form-field"><label for="af-phone">Numero WhatsApp</label><input autocomplete="tel" id="af-phone" inputmode="tel" name="whatsapp" placeholder="+39 333 123 4567" required="" type="tel"/></div>
-<div class="form-field"><label for="af-email">La tua email</label><input autocomplete="email" id="af-email" inputmode="email" name="email" placeholder="nome@ristorante.it" required="" type="email"/></div>
-</div>
-<fieldset class="form-step">
+<fieldset class="form-step on">
 <legend>Quale attività ti porta via più tempo oggi?</legend>
 <div class="choices">
 <label class="choice"><input id="af-a1" name="attivita" type="checkbox" value="ordini-fornitori"/>Ordini e fornitori</label>
@@ -760,8 +752,16 @@ html{overflow-x:clip;}
 <label class="choice"><input id="af-a5" name="attivita" type="checkbox" value="marketing-clienti"/>Marketing e clienti</label>
 <label class="choice"><input id="af-a6" name="attivita" type="checkbox" value="altro"/>Altro</label>
 </div>
-<label class="consent"><input id="af-privacy" name="privacy" required="" type="checkbox" value="si"/><span>Acconsento al trattamento dei miei dati personali nel totale rispetto della nuova GDPR, come riportato nel Regolamento UE 679/2016 D.lgs 101/2018.</span></label>
 </fieldset>
+<div class="form-step">
+<div class="form-field"><label for="af-restaurant">Nome del ristorante</label><input autocomplete="organization" id="af-restaurant" name="ristorante" placeholder="Es. Ristorante Da Mario" required="" type="text"/></div>
+</div>
+<div class="form-step">
+<div class="form-field"><label for="af-name">Come ti chiami?</label><input autocomplete="name" id="af-name" name="nome" placeholder="Nome e cognome" required="" type="text"/></div>
+<div class="form-field"><label for="af-phone">Numero WhatsApp</label><input autocomplete="tel" id="af-phone" inputmode="tel" name="whatsapp" placeholder="+39 333 123 4567" required="" type="tel"/></div>
+<div class="form-field"><label for="af-email">La tua email</label><input autocomplete="email" id="af-email" inputmode="email" name="email" placeholder="nome@ristorante.it" required="" type="email"/></div>
+<label class="consent"><input id="af-privacy" name="privacy" required="" type="checkbox" value="si"/><span>Acconsento al trattamento dei miei dati personali nel totale rispetto della nuova GDPR, come riportato nel Regolamento UE 679/2016 D.lgs 101/2018.</span></label>
+</div>
 <div class="form-actions"><button class="form-back" hidden="" id="form-back" type="button">← Indietro</button><button class="btn btn-primary btn-lg" id="form-next" type="submit"><span id="form-next-label">Avanti</span> <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button></div>
 <p class="form-error" hidden="" id="form-error" role="alert"></p>
 </form>
