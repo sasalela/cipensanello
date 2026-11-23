@@ -287,7 +287,7 @@ svg{display:block}
 .joint{flex:0 0 36px;height:4px;background:radial-gradient(circle,rgba(255,255,255,.4) 1.2px,transparent 1.8px) left center/9px 4px repeat-x}
 
 /* Come funziona */
-.how{--step-top:96px;--step-h:64px;display:grid;grid-template-columns:minmax(0,457fr) minmax(0,640fr);gap:86px;align-items:start}
+.how{--step-top:96px;--step-h:64px;--icon-h:150px;display:grid;grid-template-columns:minmax(0,457fr) minmax(0,640fr);gap:86px;align-items:start}
 .how-aside{position:sticky;top:var(--step-top)}
 .progress{margin-top:48px;border-left:1px solid var(--line)}
 .progress li{position:relative;display:flex;align-items:baseline;gap:14px;padding:10px 0 10px 20px;font-size:14px;font-weight:500;color:var(--muted);transition:color .16s ease}
@@ -296,12 +296,12 @@ svg{display:block}
 .progress li::before{content:"";position:absolute;left:-1px;top:8px;bottom:8px;width:2px;border-radius:999px;background:var(--c,#fff);scale:1 0;transition:scale .16s cubic-bezier(.23,1,.32,1)}
 .progress li.on::before{scale:1}
 .stack{display:grid;gap:24px}
-.step-card{position:sticky;top:calc(var(--step-top) + var(--i,0) * var(--step-h));isolation:isolate;transform-origin:center top;scale:calc(1 - var(--covered,0) * .05);filter:brightness(calc(1 - var(--covered,0) * .22));display:grid;grid-template-rows:var(--step-h) 1fr auto;min-height:400px;overflow:hidden;padding:0 40px 40px;border-radius:28px;border:1px solid rgba(20,20,20,.16);color:var(--ink);box-shadow:0 -20px 40px -28px rgba(0,0,0,.7)}
+.step-card{position:sticky;top:calc(var(--step-top) + var(--i,0) * var(--step-h));isolation:isolate;transform-origin:center top;scale:calc(1 - var(--covered,0) * .05);filter:brightness(calc(1 - var(--covered,0) * .22));display:grid;grid-template-rows:var(--step-h) minmax(calc(var(--icon-h) + 16px),1fr) auto;min-height:400px;overflow:hidden;padding:0 40px 40px;border-radius:28px;border:1px solid rgba(20,20,20,.16);color:var(--ink);box-shadow:0 -20px 40px -28px rgba(0,0,0,.7)}
 .step-card::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(20,20,20,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(20,20,20,.07) 1px,transparent 1px);background-size:28px 28px;-webkit-mask-image:radial-gradient(120% 100% at 85% 25%,#000 15%,rgba(0,0,0,.35) 100%);mask-image:radial-gradient(120% 100% at 85% 25%,#000 15%,rgba(0,0,0,.35) 100%)}
 .step-top{position:relative;display:flex;align-items:center;justify-content:space-between}
 .tagpill{display:inline-flex;align-items:center;height:24px;padding:0 11px;border-radius:999px;border:1px solid rgba(20,20,20,.16);background:rgba(20,20,20,.1);font:600 10px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase}
 .count{font:600 10px/1 var(--mono);letter-spacing:.06em;color:rgba(20,20,20,.6)}
-.step-icon{position:absolute;top:var(--step-h);right:40px;width:150px;height:150px;fill:none;stroke:var(--ink);stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.step-icon{position:absolute;top:var(--step-h);right:40px;width:var(--icon-h);height:var(--icon-h);fill:none;stroke:var(--ink);stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
 .step-copy{position:relative;grid-row:3}
 .step-copy h3{max-width:390px;font-size:clamp(34px,3.4vw,48px);font-weight:600;letter-spacing:-.055em;line-height:1}
 .step-copy p{max-width:430px;margin-top:16px;font-size:16px;line-height:24px;color:var(--ink-muted)}
@@ -404,10 +404,10 @@ svg{display:block}
   .card-copy{padding:24px 24px 28px}
   .how-aside{position:static}
   .progress{display:none}
-  .how{--step-top:16px;--step-h:52px}
+  .how{--step-top:16px;--step-h:52px;--icon-h:110px}
   .stack{gap:16px}
   .step-card{min-height:380px;padding:0 24px 28px}
-  .step-icon{right:24px;width:110px;height:110px}
+  .step-icon{right:24px}
   .roles{grid-template-columns:1fr;margin-top:40px}
   .role{min-height:200px;padding:24px}
   .duo-who{width:104px;font-size:13px}
@@ -677,24 +677,24 @@ html{overflow-x:clip;}
 <div class="step-top"><span class="tagpill">Passo 1</span><span class="count">01 / 03</span></div>
 <svg aria-hidden="true" class="step-icon" viewbox="0 0 100 100"><path d="M44 30l7-7a18 18 0 0 1 26 26l-7 7"></path><path d="M56 70l-7 7a18 18 0 0 1-26-26l7-7"></path><path d="M39 61l22-22"></path></svg>
 <div class="step-copy">
-<h3>Colleghi ciò che serve.</h3>
-<p>Colleghi i dati e i sistemi compatibili che scegli di autorizzare: documenti, prenotazioni, email e altri strumenti. Nessun accesso senza consenso.</p>
+<h3>Collega a nello gli strumenti che usi già</h3>
+<p>Puoi partire dal gestionale, dalla cassa o dal sistema di prenotazioni. I dati li recupera nello, senza che tu debba ricopiarli su WhatsApp.</p>
 </div>
 </li>
 <li class="step-card bg-green" style="--i:1">
 <div class="step-top"><span class="tagpill">Passo 2</span><span class="count">02 / 03</span></div>
 <svg aria-hidden="true" class="step-icon" viewbox="0 0 100 100"><path d="M18 20h64a8 8 0 0 1 8 8v38a8 8 0 0 1-8 8H46L28 88V74H18a8 8 0 0 1-8-8V28a8 8 0 0 1 8-8Z"></path><path d="M30 43v8M40 37v20M50 41v12M60 35v24M70 43v8"></path></svg>
 <div class="step-copy">
-<h3>Gli dici cosa fare.</h3>
-<p>Dal tuo WhatsApp, con un messaggio o un vocale. Dalla gestione degli ordini alle prenotazioni o ai ricontatti dei clienti.</p>
+<h3>Scrivigli o mandagli un vocale</h3>
+<p>«nello, mi prepari gli ordini per domani?» Puoi dirglielo anche mentre sei in sala.</p>
 </div>
 </li>
 <li class="step-card bg-amber" style="--i:2">
 <div class="step-top"><span class="tagpill">Passo 3</span><span class="count">03 / 03</span></div>
 <svg aria-hidden="true" class="step-icon" viewbox="0 0 100 100"><circle cx="50" cy="50" r="38"></circle><path d="M33 51l12 12 23-25"></path></svg>
 <div class="step-copy">
-<h3>Lui prepara. Tu approvi.</h3>
-<p>Consulta le informazioni disponibili, prepara il lavoro e chiede la tua conferma per le azioni importanti.</p>
+<h3>Ricevi il lavoro in chat</h3>
+<p>Un dato lo leggi subito. Prima di inviare un ordine o un messaggio, vedi a chi va e decidi se mandarlo.</p>
 </div>
 </li>
 </ol>
