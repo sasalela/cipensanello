@@ -74,105 +74,90 @@ svg{display:block}
 .lead strong{font-weight:500;color:#fff}
 .actions{display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:32px}
 
-/* Finestra con la conversazione */
+/* Telefono con la chat WhatsApp */
 .preview-wrap{position:relative;z-index:2;margin-top:104px}
-.preview-wrap::before{content:"";position:absolute;inset:-60px -40px 40% -40px;z-index:-1;background:radial-gradient(60% 100% at var(--glow-x,82%) 0%,rgba(var(--beam),.5),rgba(140,60,255,.22) 45%,transparent 75%);filter:blur(40px)}
-.preview-wrap::after{content:"";position:absolute;left:8px;right:8px;top:-1px;height:2px;z-index:3;border-radius:2px;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(236,200,255,.55) 20%,#fff var(--glow-x,82%),rgba(236,200,255,.6) 96%,rgba(255,255,255,0));box-shadow:0 0 18px 2px rgba(var(--beam),.75),0 -6px 40px 6px rgba(var(--beam),.45)}
-.window{position:relative;overflow:hidden;border:1px solid var(--line-soft);border-radius:12px;background:var(--bg);box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 40px 120px -40px rgba(0,0,0,.8)}
-.window-bar{display:flex;align-items:center;gap:16px;height:44px;padding:0 14px;border-bottom:1px solid var(--line-soft);background:var(--frame)}
-.lights{display:flex;gap:8px}
-.lights i{width:12px;height:12px;border-radius:50%}
-.lights i:nth-child(1){background:#ff5f57}
-.lights i:nth-child(2){background:#febc2e}
-.lights i:nth-child(3){background:#28c840}
-.window-tab{display:inline-flex;align-items:center;gap:8px;height:28px;padding:0 12px;border-radius:8px;background:var(--surface);font-size:12.5px;font-weight:500;color:var(--text-2)}
-.window-tab i{width:8px;height:8px;border-radius:50%;background:#25d366}
-.window-body{display:grid;grid-template-columns:300px minmax(0,1fr);height:580px}
-.side{display:flex;flex-direction:column;gap:6px;overflow:auto;padding:14px 10px;border-right:1px solid var(--line-soft);background:var(--frame)}
-.side-label{padding:4px 10px 8px;font:600 10px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--dim)}
-.side-item{display:flex;align-items:center;gap:12px;width:100%;padding:10px;border:0;border-radius:12px;background:none;color:inherit;font:inherit;text-align:left;cursor:pointer;transition:background-color .15s}
-.side-item:hover{background:rgba(255,255,255,.04)}
-.side-item.on{background:var(--surface)}
-.side-item:focus-visible,.quick button:focus-visible,.draft button:focus-visible{outline:2px solid var(--lilac);outline-offset:2px}
-.side-ic{width:40px;height:40px;border-radius:12px;color:var(--ink);display:grid;place-items:center;flex:none}
-.side-ic svg{width:20px;height:20px}
-.side-item .who{min-width:0}
-.side-item .who span{overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
-.avatar{width:40px;height:40px;border-radius:12px;background:var(--lilac);color:var(--ink);display:grid;place-items:center;flex:none}
-.avatar svg{width:22px;height:22px}
-.who b{display:block;font-size:14px;font-weight:600;letter-spacing:-.01em}
-.who span{display:block;font-size:12.5px;color:var(--muted)}
-.chat{display:flex;flex-direction:column;min-width:0;min-height:0}
-.chat-head{display:flex;align-items:center;gap:12px;padding:14px 20px;border-bottom:1px solid var(--line-soft)}
-.chat-head .avatar{width:36px;height:36px;border-radius:10px}
-.avatar.logo{background:var(--logo) center/contain no-repeat}
-.chat-log{flex:1;min-height:0;display:flex;flex-direction:column;gap:14px;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none;padding:28px 28px 20px}
-.chat-log::-webkit-scrollbar{display:none}
-.chat-log > :first-child{margin-top:auto}
-.msg{max-width:min(520px,84%);padding:12px 16px;border-radius:18px;font-size:15px;line-height:1.5}
-.msg.out{align-self:flex-end;border-bottom-right-radius:6px;background:var(--control)}
-.msg.in{align-self:flex-start;border:1px solid var(--line);border-bottom-left-radius:6px;background:var(--surface);color:var(--text-2)}
-.msg.in p + p{margin-top:8px}
-.ticks{display:flex;justify-content:flex-end;margin-top:2px;color:#53bdeb}
-.ticks svg{width:17px;height:11px}
-.quick{align-self:flex-start;display:flex;flex-wrap:wrap;gap:8px}
-.quick button,.quick span{display:inline-flex;align-items:center;height:36px;padding:0 16px;border:1px solid transparent;border-radius:999px;font-family:inherit;font-size:13.5px;font-weight:500;transition:transform .15s,background-color .15s}
-.quick button{cursor:pointer}
-.quick button:active{transform:scale(.97)}
-.quick .a{background:var(--paper);color:var(--ink)}
-.quick .a:hover{background:#fff}
-.quick .b{border-color:rgba(255,255,255,.18);background:rgba(255,255,255,.07);color:#fff}
-.quick .b:hover{background:rgba(255,255,255,.13)}
-
-/* Passi di lavoro, vocale e schede dentro la conversazione */
-.trace{align-self:flex-start;display:grid;gap:7px;padding:0 4px;font-size:12.5px;color:var(--muted)}
-.trace span{display:flex;align-items:center;gap:8px}
-.trace i{width:13px;height:13px;flex:none;border-radius:50%;border:1.5px solid rgba(255,255,255,.22);border-top-color:var(--lilac);animation:spin .7s linear infinite}
-.trace .ok{color:var(--text-2)}
-.trace .ok i{border:0;animation:none;background:var(--green) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.6 6.3l2.3 2.3 4.5-5' fill='none' stroke='%23141414' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/10px no-repeat}
-@keyframes spin{to{transform:rotate(360deg)}}
-.bars{display:flex;align-items:center;gap:2.5px;height:26px}
-.bars i{width:3px;border-radius:2px;background:rgba(255,255,255,.55)}
-.bars.live i{height:7px;animation:wave .5s ease-in-out infinite alternate}
-@keyframes wave{to{height:22px}}
-.voice{display:flex;align-items:center;gap:10px}
-.voice .play{width:30px;height:30px;border-radius:50%;background:var(--paper);color:var(--ink);display:grid;place-items:center;flex:none}
-.voice .play svg{width:11px;height:11px;margin-left:2px}
-.voice time,.field time{font:500 11px/1 var(--mono);color:var(--muted)}
-.msg .said{margin-top:8px;font-size:14px;color:var(--text-2)}
-.mini{margin-top:12px;overflow:hidden;border:1px solid var(--line);border-radius:12px;background:var(--bg);font-size:13.5px;color:var(--text-2)}
-.mini.table{display:grid;grid-template-columns:1.2fr 1fr 1fr auto}
-.mini.table.c3{grid-template-columns:repeat(3,1fr)}
-.mini.table b{padding:10px 12px;font:600 10px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--dim)}
-.mini.table span{padding:9px 12px;border-top:1px solid var(--line-soft);white-space:nowrap}
-.mini.table .up{color:#ff9a76;font-weight:600}
-.mini.draft{padding:12px 14px;border-style:dashed;border-color:rgba(255,255,255,.22)}
-.draft p{line-height:1.5;color:#fff}
-.draft p + p{margin-top:6px}
-.draft footer{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:12px}
-.draft small{font:600 10px/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--amber)}
-.draft button{height:30px;padding:0 12px;border:0;border-radius:999px;background:var(--paper);color:var(--ink);font-family:inherit;font-size:12.5px;font-weight:500;white-space:nowrap;cursor:pointer}
-.draft button:hover{background:#fff}
-.draft.sent{border-style:solid;border-color:rgba(97,201,133,.5)}
-.draft.sent small{color:var(--green)}
-.draft.sent button{display:none}
-.mini.rev{padding:12px 14px}
-.mini.rev p{margin-top:8px;color:#fff}
-.mini.turni{display:grid;gap:6px;min-width:300px;padding:12px}
-.mini.turni .week{grid-template-columns:48px repeat(7,minmax(0,1fr))}
-.mini.turni em{font-style:normal;font-size:12px}
-.mini.turni s{min-height:22px}
-
-.composer{display:flex;align-items:center;gap:10px;height:48px;margin:0 20px 20px;padding:0 7px 0 16px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--muted)}
-.composer svg{width:18px;height:18px;flex:none}
-.composer .field{flex:1;min-width:0;overflow:hidden;white-space:nowrap;font-size:14.5px;color:var(--dim)}
-.composer .field.on{color:#fff}
-.composer .field.on::after{content:"";display:inline-block;width:1.5px;height:1.1em;margin-left:2px;vertical-align:-.18em;background:#fff;animation:caret 1s steps(1) infinite}
+.preview-wrap::before{content:"";position:absolute;inset:-80px 0 35% 0;z-index:-1;background:radial-gradient(34% 70% at 50% 20%,rgba(var(--beam),.42),rgba(140,60,255,.2) 50%,transparent 75%);filter:blur(40px);pointer-events:none}
+.phone{position:relative;width:min(372px,100%);margin:0 auto;padding:11px;border-radius:62px;background:#0c0c0e;box-shadow:0 0 0 1.5px #74747b,0 0 0 4px #26262a,0 0 0 5px #55555b,0 50px 120px -36px rgba(0,0,0,.85);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#111b21;letter-spacing:0}
+.phone::before,.phone::after{content:"";position:absolute;width:4px;border-radius:2px;background:#55555b}
+.phone::before{left:-8px;top:168px;height:56px;box-shadow:0 74px 0 #55555b}
+.phone::after{right:-8px;top:212px;height:92px}
+.phone-screen{position:relative;display:flex;flex-direction:column;aspect-ratio:9/19.5;overflow:hidden;border-radius:51px;background:linear-gradient(#d8ccef 0%,#dfd6f0 32%,#e7e1f2 60%,#eeebf3 84%,#f2f1f4 100%)}
+.wa-status{position:relative;display:flex;align-items:center;justify-content:space-between;height:52px;padding:6px 30px 0 38px;font-size:15.5px;font-weight:600;color:#111}
+.wa-island{position:absolute;top:11px;left:50%;width:104px;height:31px;margin-left:-52px;border-radius:20px;background:#000}
+.wa-sys{display:flex;align-items:center;gap:5px}
+.wa-sys svg{height:11px;width:auto}
+.wa-head{display:flex;align-items:center;gap:8px;padding:2px 10px 10px;color:#111}
+.wa-glass{display:flex;align-items:center;justify-content:center;height:40px;flex:none;border-radius:20px;background:rgba(255,255,255,.78);box-shadow:0 0 0 .5px rgba(0,0,0,.07),0 3px 10px rgba(0,0,0,.06);-webkit-backdrop-filter:blur(14px) saturate(1.5);backdrop-filter:blur(14px) saturate(1.5)}
+.wa-head svg{width:22px;height:22px;flex:none}
+.wa-back{width:40px}
+.wa-head .wa-back svg{width:20px;height:20px}
+.wa-avatar{width:40px;height:40px;flex:none;border-radius:50%;background:#1d1230 var(--logo) center/74% no-repeat}
+.wa-who{flex:1;min-width:0;line-height:1.2}
+.wa-who b{display:block;font-size:17px;font-weight:600}
+.wa-state{display:block;font-size:12px;color:#5b6472}
+.wa-icons{gap:18px;padding:0 16px}
+.wa-log{flex:1;min-height:0;display:flex;flex-direction:column;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none;padding:8px 14px 10px;transition:opacity .5s;-webkit-mask-image:linear-gradient(transparent,#000 14px);mask-image:linear-gradient(transparent,#000 14px)}
+.wa-log::-webkit-scrollbar{display:none}
+.wa-log > :first-child{margin-top:auto}
+.wa-log.fade{opacity:0}
+.wa-day{align-self:center;margin:4px 0 2px;padding:7px 13px;border-radius:99px;background:rgba(255,255,255,.62);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);font-size:12px;font-weight:500;line-height:1;color:#5b6472}
+.wa-msg{position:relative;max-width:82%;margin-top:10px}
+.wa-msg.in{align-self:flex-start}
+.wa-msg.out{align-self:flex-end}
+.wa-msg.in + .wa-msg.in,.wa-msg.out + .wa-msg.out{margin-top:4px}
+.wa-bubble{position:relative;padding:8px 13px 9px;border-radius:21px;background:#fff;box-shadow:0 1px 1px rgba(11,20,26,.06),0 7px 18px -10px rgba(70,30,130,.3);font-size:15px;line-height:1.32}
+.out .wa-bubble{background:#d9fdd3;box-shadow:0 1px 1px rgba(11,20,26,.06)}
+.tail.in .wa-bubble{border-bottom-left-radius:6px}
+.tail.out .wa-bubble{border-bottom-right-radius:6px}
+.wa-bubble p + p{margin-top:6px}
+.wa-bubble b{font-weight:600}
+.wa-li{display:block;position:relative;padding-left:15px}
+.wa-li::before{content:"";position:absolute;left:3px;top:.6em;width:5px;height:5px;border-radius:50%;background:#8b5cf6}
+.wa-sp{display:inline-block;width:40px;height:1px}
+.out .wa-sp{width:60px}
+.wa-end{height:12px}
+.wa-meta{position:absolute;right:13px;bottom:7px;display:flex;align-items:center;gap:3px;font-size:11px;line-height:1;color:#667781}
+.wa-ticks{width:16px;height:11px;color:#8696a0;transition:color .3s}
+.read .wa-ticks{color:#53bdeb}
+.wa-card{margin:8px 0 2px;overflow:hidden;border-radius:12px;background:#f3f1f8;font-size:13.5px;line-height:1.3}
+.wa-card p{display:flex;align-items:baseline;gap:6px;padding:8px 12px}
+.wa-card p + p{margin-top:0;border-top:1px solid #e6e2ee}
+.wa-card b{flex:none;font-weight:600}
+.wa-card span{flex:1;min-width:0;text-align:right;white-space:nowrap;color:#54656f}
+.wa-card em{flex:none;font-style:normal;font-weight:600;color:#d1453b}
+.wa-quote{margin:8px 0 2px;padding:9px 12px;border-left:3px solid #8b5cf6;border-radius:12px;background:#f3f1f8;font-size:14px;line-height:1.38;color:#3b4a54}
+.wa-card + p,.wa-quote + p{margin-top:8px}
+.wa-btns{display:flex;gap:8px;margin-top:10px}
+.wa-btns span{flex:1;display:flex;align-items:center;justify-content:center;height:38px;padding:0 10px;border-radius:15px;background:#f5f0fd;box-shadow:inset 0 0 0 1px rgba(124,77,222,.2);font-size:15px;font-weight:500;white-space:nowrap;color:#6d3fd6;transition:background-color .2s,color .2s,box-shadow .2s}
+.wa-btns span.on{background:#e4d8fa}
+.wa-btns.used span{background:#f3f3f5;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08);color:#9aa0a8}
+.wa-dots{display:flex;gap:4px;padding:5px 2px}
+.wa-dots i{width:7px;height:7px;border-radius:50%;background:#8696a0;animation:blink 1.2s infinite}
+.wa-dots i:nth-child(2){animation-delay:.2s}
+.wa-dots i:nth-child(3){animation-delay:.4s}
+.wa-vrow{display:flex;align-items:center;gap:8px;min-width:210px;padding-top:4px}
+.wa-play{width:16px;height:16px;flex:none;color:#54656f}
+.wa-wave{flex:1;display:flex;align-items:center;gap:2px;height:24px}
+.wa-wave i{flex:1;max-width:3px;border-radius:2px;background:#8aa59a}
+.wa-said{margin-top:4px;font-size:13.5px;color:#3b4a54}
+.wa-vfoot{height:14px;margin-top:3px;font-size:11px;color:#667781}
+.wa-bar{display:flex;align-items:flex-end;gap:10px;padding:6px 12px 30px}
+.wa-plus,.wa-send{display:grid;place-items:center;width:44px;height:44px;flex:none;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(11,20,26,.08);color:#111}
+.wa-plus svg,.wa-send svg{width:20px;height:20px}
+.wa-field{flex:1;min-width:0;display:flex;align-items:flex-end;gap:8px;min-height:44px;padding:12px 14px 12px 18px;border-radius:22px;background:#fff;box-shadow:0 1px 2px rgba(11,20,26,.08)}
+.wa-mic{width:20px;height:20px;flex:none;color:#8a909a}
+.wa-text{flex:1;min-width:0;max-height:80px;overflow:hidden;font-size:15px;line-height:20px;overflow-wrap:break-word}
+.wa-text:empty::before{content:"Scrivi a nello";color:#9aa0a8}
+.wa-text.on::after{content:"";display:inline-block;width:1.5px;height:17px;margin-left:1px;vertical-align:-3px;background:#25d366;animation:caret 1s steps(1) infinite}
 @keyframes caret{50%{opacity:0}}
-.composer .field.rec{display:flex;align-items:center;gap:10px}
-.recdot{width:9px;height:9px;flex:none;border-radius:50%;background:#ff5f57;animation:blink 1s infinite}
-.composer .mic{width:34px;height:34px;flex:none;border-radius:50%;background:var(--paper);color:var(--ink);display:grid;place-items:center;transition:background-color .2s,color .2s}
-.composer.rec .mic{background:#ff5f57;color:#fff}
+.wa-send{display:none;background:#25d366;color:#fff}
+.wa-bar.wa-typing .wa-send{display:grid}
+.wa-bar.wa-typing .wa-mic{display:none}
+.wa-bar.wa-recording .wa-mic{color:#ff3b30}
+.wa-rec{display:flex;align-items:center;gap:8px}
+.wa-rec i{width:9px;height:9px;flex:none;border-radius:50%;background:#ff3b30;animation:blink 1s infinite}
+.wa-rec small{margin-left:auto;font-size:13px;color:#8696a0}
+.wa-home{position:absolute;left:50%;bottom:8px;width:120px;height:5px;margin-left:-60px;border-radius:3px;background:#111}
 .caption{margin-top:16px;text-align:center;font-size:13px;color:var(--dim)}
 
 /* Titoli di sezione */
@@ -352,11 +337,11 @@ svg{display:block}
 @keyframes enter{from{opacity:0;transform:translateY(14px);filter:blur(10px)}}
 .js .reveal{opacity:0;transform:translateY(18px);filter:blur(8px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1),filter .7s ease}
 .js .reveal.in{opacity:1;transform:none;filter:none}
-.chat-log > *{animation:pop .45s cubic-bezier(.2,.7,.2,1) both}
+.wa-log > *{animation:pop .35s cubic-bezier(.2,.7,.2,1) both}
 @keyframes pop{from{opacity:0;transform:translateY(8px)}}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .js .hero-line,.chat-log > *,.track,.duo-line,.typing i,.trace i,.bars.live i,.recdot,.composer .field.on::after{animation:none}
+  .js .hero-line,.wa-log > *,.track,.duo-line,.typing i,.wa-dots i,.wa-rec i,.wa-text.on::after{animation:none}
   .js .reveal{opacity:1;transform:none;filter:none;transition:none}
   .step-card{scale:none}
   .progress li,.progress li::before{transition:none}
@@ -371,17 +356,6 @@ svg{display:block}
   .hero-copy{padding-top:64px}
   .lead{font-size:18px;line-height:28px}
   .preview-wrap{margin-top:72px}
-  .window-body{grid-template-columns:minmax(0,1fr);height:auto}
-  .side{flex-direction:row;gap:8px;overflow-x:auto;scrollbar-width:none;padding:10px 12px;border-right:0;border-bottom:1px solid var(--line-soft)}
-  .side::-webkit-scrollbar{display:none}
-  .side-label,.side-ic,.side-item .who span{display:none}
-  .side-item{flex:none;width:auto;height:34px;padding:0 14px;border:1px solid var(--line);border-radius:999px}
-  .side-item.on{border-color:transparent;background:var(--paper);color:var(--ink)}
-  .side-item .who b{font-size:13px;font-weight:500;white-space:nowrap}
-  .chat-log{flex:none;height:440px;padding:20px 16px 16px}
-  .msg{max-width:92%}
-  .mini.turni{min-width:240px}
-  .composer{margin:0 12px 12px}
   .sub{font-size:17px}
   .statement{font-size:19px}
   .net-room{height:clamp(440px,64vh,580px);height:clamp(440px,64svh,580px)}
@@ -504,6 +478,7 @@ svg{display:block}
 html{overflow-x:clip;}
 @media (min-width:1001px){.hero-copy{min-height:calc(100vh - 216px);min-height:calc(100svh - 216px);justify-content:center;padding-top:24px;padding-bottom:0}.preview-wrap{margin-top:40px}}
 @media (max-width:700px){.hero h1{font-size:min(40px,calc((100vw - 48px) / 10))}}
+@media (max-width:700px){.phone{padding:9px;border-radius:54px}.phone-screen{border-radius:45px}.wa-status{padding-left:32px;padding-right:24px}.wa-bubble,.wa-text{font-size:14.5px}.wa-btns span{font-size:14px}.wa-msg{max-width:86%}.wa-card{font-size:12.5px}.wa-icons{gap:14px;padding:0 12px}}
 @media (max-width:700px){.cta{padding-bottom:calc(48vw + 32px);background:linear-gradient(to bottom,var(--bg),rgba(26,26,26,0) 12%),linear-gradient(to bottom,#14132e,rgba(20,19,46,0) 45%) center bottom/100% 48.2vw no-repeat,var(--cta-img) center bottom/100% auto no-repeat,#14132e}}
 
 /* Broad product vision, evidence-first ordering */
@@ -562,48 +537,28 @@ html{overflow-x:clip;}
 </div>
 </div>
 <div class="preview-wrap hero-line" style="--i:5">
-<div class="window">
-<div aria-hidden="true" class="window-bar">
-<span class="lights"><i></i><i></i><i></i></span>
-<span class="window-tab"><i></i>WhatsApp</span>
+<figure class="phone" aria-label="Esempio di chat WhatsApp con nello">
+<div class="phone-screen">
+<div aria-hidden="true" class="wa-status"><time>22:41</time><span class="wa-island"></span><span class="wa-sys"><svg fill="currentColor" viewbox="0 0 18 12"><rect height="4" rx="1" width="3" y="8"></rect><rect height="6.5" rx="1" width="3" x="5" y="5.5"></rect><rect height="9" rx="1" width="3" x="10" y="3"></rect><rect height="12" rx="1" width="3" x="15"></rect></svg><svg fill="currentColor" viewbox="0 0 16 12"><path d="M8 2.4c2.3 0 4.4.9 6 2.4l1.3-1.3A10.3 10.3 0 0 0 8 .6 10.3 10.3 0 0 0 .7 3.5L2 4.8a8.5 8.5 0 0 1 6-2.4Zm0 3.6c1.3 0 2.5.5 3.4 1.3l1.3-1.3A6.6 6.6 0 0 0 8 4.2a6.6 6.6 0 0 0-4.7 1.8l1.3 1.3C5.5 6.5 6.7 6 8 6Zm0 3.6c-.4 0-.8.2-1.1.5L8 11.4l1.1-1.3c-.3-.3-.7-.5-1.1-.5Z"></path></svg><svg viewbox="0 0 27 12"><rect fill="none" height="11" rx="3.2" stroke="currentColor" stroke-opacity=".4" width="23" x=".5" y=".5"></rect><rect fill="currentColor" height="8" rx="2" width="17" x="2" y="2"></rect><path d="M25 4v4c.8-.3 1.4-1.1 1.4-2s-.6-1.7-1.4-2Z" fill="currentColor" fill-opacity=".4"></path></svg></span></div>
+<div class="wa-head">
+<span aria-hidden="true" class="wa-glass wa-back"><svg fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M15 5l-7 7 7 7"></path></svg></span>
+<span aria-hidden="true" class="wa-avatar"></span>
+<span class="wa-who"><b>nello</b><span class="wa-state">online</span></span>
+<span aria-hidden="true" class="wa-glass wa-icons"><svg fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><rect height="12" rx="3" width="13" x="2.5" y="6"></rect><path d="M15.5 10.5l6-3.5v10l-6-3.5"></path></svg><svg fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M6.6 3.5h2.6l1.6 4.2-2.1 1.5a12 12 0 0 0 6.1 6.1l1.5-2.1 4.2 1.6v2.6a2 2 0 0 1-2.1 2A17.5 17.5 0 0 1 4.6 5.6a2 2 0 0 1 2-2.1Z"></path></svg></span>
 </div>
-<div class="window-body">
-<div aria-label="Richieste di esempio" class="side">
-<span class="side-label">Prova a chiedere</span>
-<button aria-pressed="true" class="side-item on" type="button">
-<span class="side-ic bg-amber"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M6 3h9l4 4v14H6zM14 3v5h5M9 13h6M9 17h4"></path></svg></span>
-<span class="who"><b>Ordini ai fornitori</b><span>Prepara gli ordini dalla lista</span></span>
-</button>
-<button aria-pressed="false" class="side-item" type="button">
-<span class="side-ic bg-lilac"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M7 3v3M17 3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"></path></svg></span>
-<span class="who"><b>Prezzi d’acquisto</b><span>Scopri se i costi sono aumentati</span></span>
-</button>
-<button aria-pressed="false" class="side-item" type="button">
-<span class="side-ic bg-blue"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM3 20a6 6 0 0 1 12 0M17 11a3 3 0 0 0 0-6M21 20a6 6 0 0 0-4-5.7"></path></svg></span>
-<span class="who"><b>Rappresentanti</b><span>Scrivi e chiedi conferme</span></span>
-</button>
-<button aria-pressed="false" class="side-item" type="button">
-<span class="side-ic bg-green"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.3 1.1 6.1L12 16.9l-5.4 2.9 1.1-6.1L3.2 9.4l6.1-.8z"></path></svg></span>
-<span class="who"><b>Personale</b><span>Gestisci un’assenza improvvisa</span></span>
-</button>
-<button aria-pressed="false" class="side-item" type="button"><span class="side-ic bg-salmon"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M7 3v3M17 3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"></path></svg></span><span class="who"><b>Prenotazioni e sala</b><span>Quanti coperti abbiamo sabato?</span></span></button><button aria-pressed="false" class="side-item" type="button"><span class="side-ic bg-lilac"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M3 10v4h5l11 5V5L8 10H3zM8 14l2 6h3"></path></svg></span><span class="who"><b>Marketing e clienti</b><span>Chi non torna da tre mesi?</span></span></button></div>
-<div class="chat">
-<div class="chat-head">
-<span aria-hidden="true" class="avatar logo"></span>
-<span class="who"><b>nello</b><span>Collaboratore AI</span></span>
+<div aria-label="Chat di esempio con nello" class="wa-log" role="region" tabindex="0">
+<span class="wa-day">Oggi</span>
+<div class="wa-msg out read"><div class="wa-bubble"><p>La cucina mi ha mandato la lista della spesa. Prepara gli ordini per i fornitori.<span class="wa-sp"></span></p><span class="wa-meta"><time>10:02</time><svg class="wa-ticks" viewBox="0 0 17 11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 6l3 3 6-7M7 9l.6.6L14 2"/></svg></span></div></div>
+<div class="wa-msg in tail"><div class="wa-bubble"><p>Fatto. Ho diviso la lista in 3 ordini, uno per fornitore.<span class="wa-sp"></span></p><span class="wa-meta"><time>10:02</time></span></div></div>
 </div>
-<div class="chat-log"><div class="msg out">Il personale mi ha mandato la lista della spesa. Prepara gli ordini per i fornitori.</div>
-<div class="msg in"><p>Ho organizzato la lista in 3 ordini, in base ai fornitori abituali che hai indicato.</p>
-<p>Puoi controllarli prima di autorizzare l’invio.</p></div>
-<div class="quick"><span class="a">Mostra gli ordini</span><span class="b">Prepara i messaggi</span></div></div>
-<div aria-hidden="true" class="composer">
-<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg>
-<span class="field"></span>
-<span class="mic"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24"><rect height="11" rx="3" width="6" x="9" y="3"></rect><path d="M5.5 11.5a6.5 6.5 0 0 0 13 0M12 18v3"></path></svg></span>
+<div aria-hidden="true" class="wa-bar">
+<span class="wa-plus"><svg fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg></span>
+<span class="wa-field"><span class="wa-text"></span><svg class="wa-mic" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><rect height="11" rx="3" width="6" x="9" y="3"></rect><path d="M5.5 11.5a6.5 6.5 0 0 0 13 0M12 18v3"></path></svg></span>
+<span class="wa-send"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" viewbox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"></path></svg></span>
 </div>
+<span aria-hidden="true" class="wa-home"></span>
 </div>
-</div>
-</div>
+</figure>
 <p class="caption">Simulazione illustrativa · Le funzionalità saranno sviluppate e attivate progressivamente.</p>
 </div>
 </section>
@@ -819,14 +774,6 @@ html{overflow-x:clip;}
     $$('.reveal').forEach(function(el){el.classList.add('in')});
   }
 
-  /* La luce sul bordo della finestra sta sotto il bottone in alto */
-  function placeBeam(){
-    var btn=$('.header .btn'),pw=$('.preview-wrap');
-    var b=btn.getBoundingClientRect(),p=pw.getBoundingClientRect();
-    var mid=b.left+b.width/2;
-    pw.style.setProperty('--glow-x',((mid-p.left)/p.width*100)+'%');
-  }
-
   /* «Come funziona»: le schede si impilano; quella coperta si rimpicciolisce e si scurisce */
   var stack=$('.stack'),cards=$$('.step-card'),marks=$$('.progress li');
   function markStep(){
@@ -841,189 +788,136 @@ html{overflow-x:clip;}
     marks.forEach(function(m,i){m.classList.toggle('on',i===on)});
   }
 
-  /* Demo nella finestra: il visitatore sceglie una richiesta e vede nello lavorare.
-     Testi e numeri sono esempi illustrativi. */
+  /* Demo nel telefono: una sola chat WhatsApp con nello, dagli ordini ai clienti.
+     Si muove solo quando il telefono è sullo schermo. Testi, nomi e numeri sono esempi illustrativi. */
   (function(){
-    var win=$('.window'),log=$('.chat-log'),box=$('.composer'),field=$('.composer .field'),side=$('.side'),items=$$('.side-item');
-    if(!win||!log||!field)return;
-    var calm=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var TICK='<span class="ticks" aria-hidden="true"><svg viewBox="0 0 17 11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6l3 3 6-7M7 9l.6.6L14 2"/></svg></span>';
-    var STAR='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>';
-    function stars(n){var h='';for(var i=0;i<5;i++)h+=i<n?STAR:STAR.replace('<svg','<svg class="off"');return '<div class="stars">'+h+'</div>'}
-    function table(cls,head,rows){
-      var h='<div class="mini table '+cls+'">';
-      head.forEach(function(c){h+='<b>'+c+'</b>'});
-      rows.forEach(function(r){r.forEach(function(c){h+='<span'+(c.charAt(0)==='+'?' class="up"':'')+'>'+c+'</span>'})});
-      return h+'</div>';
-    }
-    function draft(lines,ask,done){
-      return '<div class="mini draft">'+lines.map(function(l){return '<p>'+l+'</p>'}).join('')
-        +'<footer><small>Anteprima · non inviato</small><button type="button" data-done="'+(done||'Approvazione simulata')+'">'+(ask||'Simula approvazione')+'</button></footer></div>';
-    }
-    function turni(){
-      function row(n,c){return '<div class="week"><em>'+n+'</em>'+c+'</div>'}
-      return '<div class="mini turni"><div class="week"><span></span><b>L</b><b>M</b><b>M</b><b>G</b><b>V</b><b>S</b><b>D</b></div>'
-        +row('Giulia','<s class="l x2"></s><s></s><s class="l x2"></s><s></s><s class="l"></s>')
-        +row('Marco','<s></s><s class="g x3"></s><s class="g"></s><s></s><s class="g"></s>')
-        +row('Luca','<s class="a"></s><s></s><s></s><s class="a x3"></s><s></s>')+'</div>';
-    }
-    function bars(n,live){
-      var hs=[8,14,20,11,24,16,9,19,13,22,10,17,25,12,7,18,21,9,15,11,23,8],h='';
-      for(var i=0;i<n;i++)h+='<i style="'+(live?'animation-delay:-'+(i*83%500)+'ms':'height:'+hs[i%hs.length]+'px')+'"></i>';
-      return '<span class="bars'+(live?' live':'')+'">'+h+'</span>';
-    }
+    var phone=$('.phone'),log=$('.wa-log'),bar=$('.wa-bar'),text=$('.wa-text'),state=$('.wa-state');
+    if(!phone||!log||!bar||!text||!state)return;
+    var calm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var TICKS='<svg class="wa-ticks" viewBox="0 0 17 11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 6l3 3 6-7M7 9l.6.6L14 2"/></svg>',SP='<span class="wa-sp"></span>';
+    function rows(list){return '<div class="wa-card">'+list.map(function(r){return '<p><b>'+r[0]+'</b><span>'+r[1]+'</span>'+(r[2]?'<em>'+r[2]+'</em>':'')+'</p>'}).join('')+'</div>'}
+    function quote(t){return '<blockquote class="wa-quote">'+t+'</blockquote>'}
 
-    var S=[
-      {ask:"La cucina mi ha mandato la lista della spesa. Prepara gli ordini divisi per fornitore.",
-       steps:["Leggo la lista della spesa","Controllo gli abbinamenti prodotto-fornitore","Preparo gli ordini da approvare"],
-       say:["Ho organizzato i prodotti della lista in 3 ordini, usando gli abbinamenti che hai indicato.","Puoi controllare quantità e destinatari prima dell'invio."],
-       acts:[
-        {label:"Mostra gli ordini",say:["Ecco un riepilogo illustrativo. Ogni ordine rimane da confermare."],
-         card:table('c3',["Fornitore","Prodotti","Stato"],[["Pregis","Mozzarella, pancetta","Bozza"],["Bevande","Acqua, vino","Bozza"],["Pescheria","Persico","Bozza"]])},
-        {label:"Prepara i messaggi",steps:["Compongo i messaggi per i fornitori"],say:["Ho preparato un messaggio per ogni fornitore. Nessuno verrà inviato senza il tuo consenso."],
-         card:draft(["Buongiorno Sergio, vorrei ordinare due cartoni di persico per la prossima consegna.","Puoi confermare disponibilità e data di consegna?"],"Simula approvazione","Approvazione simulata")}
-       ]},
-      {ask:"Controlla se la mozzarella e l'olio sono aumentati rispetto a due mesi fa.",
-       steps:["Cerco i documenti disponibili","Confronto prezzi e unità di misura","Preparo il riepilogo"],
-       say:["In questo esempio, la mozzarella passa da 8,50 € a 9,18 € al kg (+8%).","Anche l'olio risulta aumentato del 5%.","Vuoi vedere il confronto o preparare un messaggio al fornitore?"],
-       acts:[
-        {label:"Mostra confronto",say:["Ecco il riepilogo, con importi puramente illustrativi."],
-         card:table('',["Prodotto","Prima","Ora","Diff."],[["Mozzarella","8,50 €/kg","9,18 €/kg","+8%"],["Olio","7,40 €/l","7,77 €/l","+5%"],["Farina","0,95 €/kg","0,95 €/kg","="]])},
-        {label:"Prepara messaggio",steps:["Creo una bozza di richiesta chiarimenti"],say:["Ecco il testo da verificare."],
-         card:draft(["Buongiorno, ho notato una variazione dei prezzi di mozzarella e olio rispetto alle precedenti forniture.","Può confermarmi il listino aggiornato? Grazie."],"Simula approvazione","Approvazione simulata")}
-       ]},
-      {voice:"0:06",ask:"Chiedi a Sergio se ha ricevuto l'ordine e quando consegna.",
-       steps:["Recupero i riferimenti autorizzati","Preparo una richiesta di conferma"],
-       say:["Ho preparato il messaggio da inviare a Sergio.","Controllalo e conferma: l'invio dipenderà dal canale collegato."],
-       acts:[
-        {label:"Leggi messaggio",say:["Ecco la bozza di sollecito."],
-         card:draft(["Ciao Sergio, ti scrivo per verificare che tu abbia ricevuto l'ordine di ieri.","Mi confermi anche il giorno di consegna? Grazie."],"Simula approvazione","Approvazione simulata")},
-        {label:"Mostra attività",say:["Ecco quali passaggi rimangono da seguire."],
-         card:table('c3',["Attività","Stato","Azione"],[["Ordine","Preparato","Verifica"],["Conferma","Da ricevere","Sollecito"]])}
-       ]},
-      {ask:"Giulia venerdì non c'è. Aiutami a trovare chi può coprire il servizio serale.",
-       steps:["Controllo le disponibilità autorizzate","Individuo i turni da coprire","Preparo una richiesta di disponibilità"],
-       say:["Ho preparato una richiesta da inviare alle persone che hai autorizzato a contattare.","Decidi tu a chi inviarla e chi assegnare al turno."],
-       acts:[
-        {label:"Mostra richiesta",say:["Ecco un messaggio pronto da approvare."],
-         card:draft(["Ciao! Venerdì sera abbiamo bisogno di una sostituzione in sala.","Se sei disponibile, puoi farmelo sapere entro oggi?"],"Simula approvazione","Approvazione simulata")},
-        {label:"Mostra turni",say:["Ecco un esempio della bozza di turni da rivedere."],card:turni()}
-       ]},
-      {ask:"Quanti coperti abbiamo sabato sera? E ci sono richieste particolari?",
-       steps:["Consulto le prenotazioni nel sistema collegato","Riepilogo i coperti e le note autorizzate"],
-       say:["Nel riepilogo illustrativo risultano 24 prenotazioni per 78 coperti.","Ci sono 3 richieste da verificare prima del servizio."],
-       acts:[
-        {label:"Mostra riepilogo",say:["Ecco le informazioni di esempio disponibili per sabato."],card:table('c3',["Dato","Valore","Stato"],[["Prenotazioni","24","Riepilogo"],["Coperti","78","Riepilogo"],["Note","3","Verificare"]])},
-        {label:"Prepara promemoria",steps:["Preparo un promemoria per il responsabile di sala"],say:["Ecco una bozza da condividere."],card:draft(["Per sabato sera risultano 78 coperti previsti.","Ci sono 3 richieste da verificare prima del servizio."],"Simula approvazione","Approvazione simulata")}
-       ]},
-      {ask:"Quali clienti non tornano da almeno tre mesi? Prepara un messaggio per ricontattarli.",
-       steps:["Cerco i contatti che hai autorizzato","Applico il criterio di inattività","Preparo una bozza di ricontatto"],
-       say:["In questo esempio, 42 clienti non risultano tornati negli ultimi 90 giorni.","Posso preparare un messaggio da rivedere, rispettando i consensi disponibili."],
-       acts:[
-        {label:"Mostra segmento",say:["Ecco la selezione illustrativa: nessun cliente reale è stato interrogato."],card:table('c3',["Segmento","Contatti","Nota"],[["Assenti 90 gg","42","Esempio"],["Contattabili","Da verificare","Consensi"]])},
-        {label:"Prepara messaggio",steps:["Scrivo una bozza di ricontatto"],say:["Ecco una proposta. L'invio richiederà conferma e consensi validi."],card:draft(["Ciao! È un po' che non ci vediamo e ci farebbe piacere riaverti al ristorante.","Se ti va, scopri le nostre novità e prenota quando preferisci."],"Simula approvazione","Approvazione simulata")}
-       ]}
+    /* La chat, passo per passo. out: scrive il ristoratore. voice: manda un vocale.
+       in: risponde nello (card = scheda, after = riga dopo la scheda, btns = bottoni). tap: il ristoratore tocca un bottone. */
+    var C=[
+      {out:'La cucina mi ha mandato la lista della spesa. Prepara gli ordini per i fornitori.',t:'10:02'},
+      {in:['Fatto. Ho diviso la lista in 3 ordini:'],card:rows([['Pregis','Mozzarella, pancetta'],['Bevande','Acqua, vino'],['Pescheria','Persico']]),after:'Li invio?',btns:['Invia gli ordini','Modifica'],t:'10:02'},
+      {tap:'Invia gli ordini',t:'10:03'},
+      {in:['Inviati ✓','Ti scrivo appena i fornitori confermano.'],t:'10:03'},
+      {in:['Ho letto la fattura di Pregis. Due prezzi sono aumentati:'],card:rows([['Mozzarella','8,50 → 9,18 €/kg','+8%'],['Olio','7,40 → 7,77 €/l','+5%']]),t:'12:40'},
+      {out:'Scrivi a Luca, il rappresentante, e chiedi il listino aggiornato.',t:'12:41'},
+      {in:['Ecco il messaggio per Luca:'],card:quote('Ciao Luca, nell’ultima fattura mozzarella e olio sono aumentati. Mi mandi il listino aggiornato? Grazie.'),btns:['Invia','Modifica'],t:'12:41'},
+      {tap:'Invia',t:'12:42'},
+      {in:['Inviato a Luca ✓'],t:'12:42'},
+      {out:'Giulia venerdì sera non c’è. Chi può coprire il turno?',t:'16:05'},
+      {in:['Venerdì sera sono liberi Marco e Sara. Chiedo a loro?'],btns:['Sì, chiedi','No'],t:'16:05'},
+      {tap:'Sì, chiedi',t:'16:06'},
+      {in:['Sara ha confermato ✓','Venerdì sera è in sala al posto di Giulia.'],t:'16:21'},
+      {voice:'0:04',said:'Quanti coperti abbiamo stasera?',t:'18:30'},
+      {in:['Stasera hai <b>24 prenotazioni</b> per <b>78 coperti</b>.','Da verificare prima del servizio:<span class="wa-li">un seggiolone</span><span class="wa-li">un compleanno</span><span class="wa-li">un’allergia ai crostacei</span>'],t:'18:30'},
+      {out:'Quali clienti non tornano da tre mesi?',t:'22:38'},
+      {in:['Sono <b>42</b>. Vuoi che prepari un messaggio per invitarli a tornare?'],btns:['Sì, preparalo','Non ora'],t:'22:38'},
+      {tap:'Sì, preparalo',t:'22:39'},
+      {in:['Ecco la bozza:'],card:quote('Ciao! È un po’ che non ci vediamo. Ci farebbe piacere riaverti a cena: ti teniamo un tavolo?'),after:'La mando solo a chi ha dato il consenso.',btns:['Invia','Modifica'],t:'22:39'},
+      {tap:'Invia',t:'22:40'},
+      {in:['Fatto ✓ L’ho mandata ai <b>31 clienti</b> che hanno dato il consenso.'],t:'22:40'}
     ];
+    var WAVE=[6,10,16,9,20,13,7,18,11,22,8,15,19,9,6,14,17,8,12,10,16,7];
 
-    var run=0,auto=true,visible=false,started=false;
-    function wait(ms){return new Promise(function(r){setTimeout(r,calm?0:ms)})}
-    function down(){log.scrollTo({top:log.scrollHeight,behavior:calm?'auto':'smooth'})}
-    function add(html,cls){var d=document.createElement('div');d.className=cls;d.innerHTML=html;log.appendChild(d);down();return d}
-    function idle(){box.classList.remove('rec');field.className='field';field.textContent='Scegli un esempio';field.scrollLeft=0}
+    /* Scorrimento: la chat segue l'ultimo messaggio solo se il visitatore è già in fondo.
+       Se sta rileggendo più su, resta dov'è. */
+    function near(){return log.scrollHeight-log.scrollTop-log.clientHeight<48}
+    function grow(fn){var end=near();fn();if(end)log.scrollTop=log.scrollHeight}
 
-    async function type(text,me){
-      field.className='field on';field.textContent='';
-      if(calm){field.textContent=text;return}
-      for(var i=1;i<=text.length;i++){
-        if(me!==run)return;
-        field.textContent=text.slice(0,i);field.scrollLeft=field.scrollWidth;
-        await wait(text.charAt(i-1)===' '?24:14+Math.random()*20);
-      }
-      await wait(300);
+    function meta(t,out){return '<span class="wa-meta"><time>'+t+'</time>'+(out?TICKS:'')+'</span>'}
+    function add(side,html){
+      var prev=log.lastElementChild;
+      if(prev&&prev.classList.contains(side))prev.classList.remove('tail');
+      var m=document.createElement('div');m.className='wa-msg '+side+' tail';m.innerHTML=html;
+      grow(function(){log.appendChild(m)});return m;
     }
-    async function record(len,me){
-      box.classList.add('rec');field.className='field rec';
-      field.innerHTML='<i class="recdot"></i><time>0:00</time>'+bars(18,true);
-      var t=field.querySelector('time'),secs=parseInt(len.split(':')[1],10);
-      for(var k=1;k<=secs;k++){await wait(260);if(me!==run)return;t.textContent='0:0'+k}
-      await wait(220);
+    function sent(t,time){return add('out','<div class="wa-bubble"><p>'+t+SP+'</p>'+meta(time,true)+'</div>')}
+    function voice(s){
+      var w='';WAVE.forEach(function(h){w+='<i style="height:'+h+'px"></i>'});
+      return add('out','<div class="wa-bubble"><div class="wa-vrow"><svg class="wa-play" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M2 1l9 5-9 5z"/></svg><span class="wa-wave" aria-hidden="true">'+w+'</span></div>'
+        +'<p class="wa-said">'+s.said+'</p><div class="wa-vfoot">'+s.voice+'</div>'+meta(s.t,true)+'</div>');
     }
-    async function work(steps,me){
-      if(!steps||!steps.length)return true;
-      var tr=add('','trace');
-      for(var i=0;i<steps.length;i++){
-        var sp=document.createElement('span');sp.innerHTML='<i></i>'+steps[i];tr.appendChild(sp);down();
-        await wait(720);if(me!==run)return false;
-        sp.className='ok';
-      }
-      return true;
+    function reply(s){
+      var h=s.in.map(function(x){return '<p>'+x+'</p>'}).join('')+(s.card||'')+(s.after?'<p>'+s.after+'</p>':'');
+      if(s.btns)h+='<div class="wa-btns">'+s.btns.map(function(b){return '<span>'+b+'</span>'}).join('')+'</div>';
+      /* L'ora va in fondo a destra: sull'ultima riga di testo se c'è posto, altrimenti su una riga sua */
+      h=h.slice(-4)==='</p>'?h.slice(0,-4)+SP+'</p>':h+'<div class="wa-end"></div>';
+      return '<div class="wa-bubble">'+h+meta(s.t)+'</div>';
     }
-    async function answer(say,card,me){
-      var b=add('<div class="typing"><i></i><i></i><i></i></div>','msg in');
-      await wait(650);if(me!==run)return false;
-      b.innerHTML='';
-      for(var i=0;i<say.length;i++){
-        var p=document.createElement('p');p.textContent=say[i];b.appendChild(p);down();
-        await wait(380);if(me!==run)return false;
-      }
-      if(card){b.insertAdjacentHTML('beforeend',card);down();await wait(250)}
-      return me===run;
+    function read(){Array.prototype.forEach.call(log.querySelectorAll('.wa-msg.out:not(.read)'),function(m){m.classList.add('read')})}
+    function show(s){
+      if(s.out)sent(s.out,s.t);
+      else if(s.voice)voice(s);
+      else if(s.tap){last(s.tap).parentNode.classList.add('used');sent(s.tap,s.t)}
+      else{read();add('in',reply(s))}
     }
-    function offer(si,left){
-      if(!left.length)return;
-      var q=add('','quick');
-      left.forEach(function(ai,k){
-        var b=document.createElement('button');b.type='button';b.className=k?'b':'a';b.textContent=S[si].acts[ai].label;
-        b.addEventListener('click',function(){auto=false;q.remove();act(si,ai,left.filter(function(x){return x!==ai}))});
-        q.appendChild(b);
-      });
-      down();
+    function last(label){
+      var bs=log.querySelectorAll('.wa-btns span');
+      for(var i=bs.length-1;i>=0;i--)if(bs[i].textContent===label)return bs[i];
+      return null;
     }
-    async function act(si,ai,left){
-      var me=++run,a=S[si].acts[ai];
-      add(a.label+TICK,'msg out');
-      await wait(380);if(me!==run)return;
-      if(!(await work(a.steps,me)))return;
-      if(!(await answer(a.say,a.card,me)))return;
-      offer(si,left);
-    }
-    async function play(si,byUser){
-      var me=++run,s=S[si];
-      items.forEach(function(b,i){b.classList.toggle('on',i===si);b.setAttribute('aria-pressed',i===si?'true':'false')});
-      if(side&&items[si]){var ir=items[si].getBoundingClientRect(),sr=side.getBoundingClientRect();side.scrollTo({left:side.scrollLeft+ir.left-sr.left-(sr.width-ir.width)/2,behavior:calm?'auto':'smooth'})}
-      log.innerHTML='';idle();
-      await wait(byUser?150:500);if(me!==run)return;
-      if(s.voice){
-        await record(s.voice,me);if(me!==run)return;
-        idle();
-        add('<div class="voice"><span class="play"><svg viewBox="0 0 12 12" fill="currentColor"><path d="M2 1l9 5-9 5z"/></svg></span>'+bars(22,false)+'<time>'+s.voice+'</time></div><p class="said">'+s.ask+'</p>'+TICK,'msg out');
-      }else{
-        await type(s.ask,me);if(me!==run)return;
-        idle();
-        add(s.ask+TICK,'msg out');
-      }
-      await wait(420);if(me!==run)return;
-      if(!(await work(s.steps,me)))return;
-      if(!(await answer(s.say,null,me)))return;
-      offer(si,[0,1]);
-      if(!auto||calm)return;
-      await wait(7000);
-      while(me===run&&auto&&!visible)await wait(800);
-      if(me===run&&auto)play((si+1)%S.length,false);
-    }
+    function reset(){log.innerHTML='<span class="wa-day">Oggi</span>';state.textContent='online';text.textContent='';text.className='wa-text';bar.className='wa-bar'}
 
-    items.forEach(function(b,i){b.addEventListener('click',function(){auto=false;started=true;play(i,true)})});
-    win.addEventListener('click',function(){auto=false});
-    log.addEventListener('click',function(e){
-      var b=e.target.closest?e.target.closest('button[data-done]'):null;if(!b)return;
-      var d=b.closest('.draft');d.classList.add('sent');d.querySelector('small').textContent=b.getAttribute('data-done');
-    });
+    reset();
+    if(calm){C.forEach(show);read();log.scrollTop=0;return}
 
-    log.innerHTML='';idle();
-    function start(){if(!started){started=true;play(0,false)}}
+    var visible=false;
+    function sleep(ms){return new Promise(function(r){setTimeout(r,ms)})}
+    async function wait(ms){await sleep(ms);while(!visible||document.hidden)await sleep(400)}
+    async function type(t){
+      bar.classList.add('wa-typing');text.classList.add('on');
+      for(var i=1;i<=t.length;i++){
+        grow(function(){text.textContent=t.slice(0,i)});text.scrollTop=text.scrollHeight;
+        await wait(t.charAt(i-1)===' '?40:22+Math.random()*26);
+      }
+      await wait(380);
+      text.textContent='';text.classList.remove('on');bar.classList.remove('wa-typing');
+    }
+    async function record(len){
+      bar.classList.add('wa-recording');
+      text.innerHTML='<span class="wa-rec"><i></i><time>0:00</time><small>‹ Scorri per annullare</small></span>';
+      var tm=text.querySelector('time'),secs=parseInt(len.split(':')[1],10);
+      for(var k=1;k<=secs;k++){await wait(420);tm.textContent='0:0'+k}
+      await wait(260);
+      text.textContent='';bar.classList.remove('wa-recording');
+    }
+    async function answer(s){
+      var size=s.in.join(' ').length+(s.card?60:0)+(s.after?s.after.length:0);
+      await wait(500);read();
+      state.textContent='sta scrivendo…';
+      var m=add('in','<div class="wa-bubble"><span class="wa-dots" aria-hidden="true"><i></i><i></i><i></i></span></div>');
+      await wait(Math.min(1700,700+size*9));
+      state.textContent='online';
+      grow(function(){m.innerHTML=reply(s)});
+      await wait(Math.min(4200,900+size*24));
+    }
+    async function play(){
+      for(;;){
+        reset();
+        await wait(800);
+        for(var i=0;i<C.length;i++){
+          var s=C[i];
+          if(s.out){await type(s.out);sent(s.out,s.t);await wait(300)}
+          else if(s.voice){await record(s.voice);voice(s);await wait(300)}
+          else if(s.tap){var b=last(s.tap);b.classList.add('on');await wait(420);b.classList.remove('on');b.parentNode.classList.add('used');sent(s.tap,s.t);await wait(300)}
+          else await answer(s);
+        }
+        await wait(9000);
+        log.classList.add('fade');await wait(600);log.classList.remove('fade');
+      }
+    }
     if('IntersectionObserver' in window){
-      new IntersectionObserver(function(es){visible=es[0].isIntersecting;if(visible)start()},{threshold:.25}).observe(win);
-    }else{visible=true;start()}
+      new IntersectionObserver(function(es){
+        var e=es[0];if(e.intersectionRatio>=.35)visible=true;else if(!e.isIntersecting)visible=false;
+      },{threshold:[0,.35]}).observe(phone);
+    }else visible=true;
+    play();
   })();
 
   /* Modulo a passi della richiesta di accesso.
@@ -1575,12 +1469,8 @@ html{overflow-x:clip;}
   var raf=0;
   window.addEventListener('scroll',function(){if(!raf)raf=requestAnimationFrame(function(){raf=0;markStep()})},{passive:true});
   var timer=0;
-  window.addEventListener('resize',function(){clearTimeout(timer);timer=setTimeout(function(){placeBeam();markStep()},120)});
-  placeBeam();markStep();
-  window.addEventListener('load',placeBeam);
-  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(placeBeam);
-  var pw=$('.preview-wrap');
-  pw.addEventListener('animationend',function(e){if(e.target===pw)placeBeam()});
+  window.addEventListener('resize',function(){clearTimeout(timer);timer=setTimeout(markStep,120)});
+  markStep();
 })();
 </script>
 </body>
