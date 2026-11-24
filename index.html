@@ -822,6 +822,8 @@ html{overflow-x:clip;}
       {tap:'Invia',t:'22:40'},
       {in:['Fatto ✓ L’ho mandata ai <b>31 clienti</b> che hanno dato il consenso.'],t:'22:40'}
     ];
+    /* I primi K passi sono già scritti all'apertura: la chat non è mai vuota e l'animazione continua da lì. */
+    var K=4;
     var WAVE=[6,10,16,9,20,13,7,18,11,22,8,15,19,9,6,14,17,8,12,10,16,7];
 
     /* Scorrimento: la chat segue l'ultimo messaggio solo se il visitatore è già in fondo.
@@ -898,9 +900,9 @@ html{overflow-x:clip;}
     }
     async function play(){
       for(;;){
-        reset();
+        reset();C.slice(0,K).forEach(show);
         await wait(800);
-        for(var i=0;i<C.length;i++){
+        for(var i=K;i<C.length;i++){
           var s=C[i];
           if(s.out){await type(s.out);sent(s.out,s.t);await wait(300)}
           else if(s.voice){await record(s.voice);voice(s);await wait(300)}
