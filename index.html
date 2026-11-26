@@ -96,7 +96,7 @@ svg{display:block}
 .wa-who b{display:block;font-size:17px;font-weight:600}
 .wa-state{display:block;font-size:12px;color:#5b6472}
 .wa-icons{gap:18px;padding:0 16px}
-.wa-log{flex:1;min-height:0;display:flex;flex-direction:column;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none;padding:8px 14px 10px;transition:opacity .5s;-webkit-mask-image:linear-gradient(transparent,#000 14px);mask-image:linear-gradient(transparent,#000 14px)}
+.wa-log{flex:1;min-height:0;display:flex;flex-direction:column;overflow-y:hidden;scrollbar-width:none;padding:8px 14px 10px;transition:opacity .5s;-webkit-mask-image:linear-gradient(transparent,#000 14px);mask-image:linear-gradient(transparent,#000 14px)}
 .wa-log::-webkit-scrollbar{display:none}
 .wa-log > :first-child{margin-top:auto}
 .wa-log.fade{opacity:0}
@@ -343,6 +343,7 @@ svg{display:block}
   html{scroll-behavior:auto}
   .js .hero-line,.wa-log > *,.track,.duo-line,.typing i,.wa-dots i,.wa-rec i,.wa-text.on::after{animation:none}
   .js .reveal{opacity:1;transform:none;filter:none;transition:none}
+  .wa-log{overflow-y:auto}
   .step-card{scale:none}
   .progress li,.progress li::before{transition:none}
 }
@@ -460,6 +461,9 @@ svg{display:block}
 .choice input{flex:none;width:20px;height:20px;margin:0;border-radius:6px;background:#a6a6a6;-webkit-appearance:none;appearance:none;cursor:pointer;transition:background-color .15s}
 .choice input:checked{background:var(--lilac) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.6 6.3l2.3 2.3 4.5-5' fill='none' stroke='%23141414' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/14px no-repeat}
 .choice input:focus-visible{outline:2px solid var(--lilac);outline-offset:2px}
+/* «Altro»: la casella per scrivere quale attività, allineata al testo delle scelte */
+.choice-more{margin:4px 0 6px 32px}
+.choice-more[hidden]{display:none}
 .consent{display:flex;align-items:flex-start;gap:10px;padding-top:14px;border-top:1px solid var(--line);font-size:12px;line-height:1.5;color:var(--muted);cursor:pointer}
 .consent input{flex:none;width:16px;height:16px;margin:1px 0 0;border-radius:5px;background:#a6a6a6;-webkit-appearance:none;appearance:none;cursor:pointer}
 .consent input:checked{background:var(--lilac) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.6 6.3l2.3 2.3 4.5-5' fill='none' stroke='%23141414' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/11px no-repeat}
@@ -597,7 +601,7 @@ html{overflow-x:clip;}
 <span class="wa-who"><b>nello</b><span class="wa-state">online</span></span>
 <span aria-hidden="true" class="wa-glass wa-icons"><svg fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><rect height="12" rx="3" width="13" x="2.5" y="6"></rect><path d="M15.5 10.5l6-3.5v10l-6-3.5"></path></svg><svg fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M6.6 3.5h2.6l1.6 4.2-2.1 1.5a12 12 0 0 0 6.1 6.1l1.5-2.1 4.2 1.6v2.6a2 2 0 0 1-2.1 2A17.5 17.5 0 0 1 4.6 5.6a2 2 0 0 1 2-2.1Z"></path></svg></span>
 </div>
-<div aria-label="Chat di esempio con nello" class="wa-log" role="region" tabindex="0">
+<div aria-label="Chat di esempio con nello" class="wa-log" role="region">
 <span class="wa-day">Oggi</span>
 <div class="wa-msg out read"><div class="wa-bubble"><p>La cucina mi ha mandato la lista della spesa. Prepara gli ordini per i fornitori.<span class="wa-sp"></span></p><span class="wa-meta"><time>10:02</time><svg class="wa-ticks" viewBox="0 0 17 11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 6l3 3 6-7M7 9l.6.6L14 2"/></svg></span></div></div>
 <div class="wa-msg in tail"><div class="wa-bubble"><p>Fatto. Ho diviso la lista in 3 ordini, uno per fornitore.<span class="wa-sp"></span></p><span class="wa-meta"><time>10:02</time></span></div></div>
@@ -763,6 +767,7 @@ html{overflow-x:clip;}
 <label class="choice"><input id="af-a4" name="attivita" type="checkbox" value="personale"/>Gestione del personale</label>
 <label class="choice"><input id="af-a5" name="attivita" type="checkbox" value="marketing-clienti"/>Marketing e clienti</label>
 <label class="choice"><input id="af-a6" name="attivita" type="checkbox" value="altro"/>Altro</label>
+<div class="form-field choice-more" hidden="" id="af-other-box"><input aria-label="Quale altra attività ti porta via tempo?" autocomplete="off" id="af-other" maxlength="200" name="altro" placeholder="Scrivi quale attività" type="text"/></div>
 </div>
 </fieldset>
 <div class="form-step">
@@ -889,10 +894,8 @@ html{overflow-x:clip;}
     var K=4;
     var WAVE=[6,10,16,9,20,13,7,18,11,22,8,15,19,9,6,14,17,8,12,10,16,7];
 
-    /* Scorrimento: la chat segue l'ultimo messaggio solo se il visitatore è già in fondo.
-       Se sta rileggendo più su, resta dov'è. */
-    function near(){return log.scrollHeight-log.scrollTop-log.clientHeight<48}
-    function grow(fn){var end=near();fn();if(end)log.scrollTop=log.scrollHeight}
+    /* La chat non si scorre a mano (come su Lexroom): segue sempre l'ultimo messaggio */
+    function grow(fn){fn();log.scrollTop=log.scrollHeight}
 
     function meta(t,out){return '<span class="wa-meta"><time>'+t+'</time>'+(out?TICKS:'')+'</span>'}
     function add(side,html){
@@ -1078,7 +1081,7 @@ html{overflow-x:clip;}
     else{try{utm=JSON.parse(get('sessionStorage','nello-utm')||'{}')||{}}catch(e){utm={}}}
 
     /* Bozza: se un invio non riesce, i dati restano nel browser e tornano nel modulo alla visita dopo */
-    var FIELDS=['af-name','af-restaurant','af-phone','af-email'];
+    var FIELDS=['af-name','af-restaurant','af-phone','af-email','af-other'];
     var saveDraft=function(){
       var d={attivita:$$('input[name=attivita]:checked').map(function(b){return b.value})};
       FIELDS.forEach(function(id){d[id]=$('#'+id).value});
@@ -1090,6 +1093,12 @@ html{overflow-x:clip;}
       FIELDS.forEach(function(id){if(typeof d[id]==='string')$('#'+id).value=d[id]});
       $$('input[name=attivita]').forEach(function(b){b.checked=(d.attivita||[]).indexOf(b.value)>=0});
     })();
+
+    /* «Altro»: spuntandolo compare la casella per scrivere quale attività (non obbligatoria) */
+    var other=$('#af-a6'),otherBox=$('#af-other-box'),otherText=$('#af-other');
+    var showOther=function(){otherBox.hidden=!other.checked};
+    showOther();
+    other.addEventListener('change',function(){showOther();if(other.checked)otherText.focus()});
 
     privacy.addEventListener('change',function(){consentAt=privacy.checked?new Date().toISOString():''});
 
@@ -1125,7 +1134,10 @@ html{overflow-x:clip;}
       return d;
     };
     var payload=function(){
-      var acts=$$('input[name=attivita]:checked').map(function(b){return b.parentNode.textContent.trim()});
+      var acts=$$('input[name=attivita]:checked').map(function(b){
+        var t=b.parentNode.textContent.trim(),more=otherText.value.trim();
+        return b===other&&more?t+': '+more:t;
+      });
       var p={
         name:$('#af-name').value.trim(),
         email:email.value.trim(),
