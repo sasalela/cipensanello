@@ -509,6 +509,57 @@ html{overflow-x:clip;}
 #funzioni .bento .feature-secondary:last-child .feature-art{grid-column:2;grid-row:1/span 2;min-height:120px}
 @media(max-width:1000px){#funzioni .bento .feature-secondary:last-child{grid-column:span 2}}
 @media(max-width:700px){#funzioni .bento .feature-secondary:last-child{grid-column:span 1;display:flex;min-height:330px}#funzioni .bento .feature-secondary:last-child .feature-art{min-height:130px}}
+/* Il video di nello esce dal telefono mentre si scorre, come su Lexroom.
+   .hx tiene ferma l'apertura per altri 125svh: in quello spazio il video passa dal fumetto della chat al riquadro grande. */
+.hx{position:relative;height:calc(var(--hh,110svh) + 125svh)}
+.hx>.hero{position:sticky;top:var(--ht,-10svh)}
+.lnv{position:absolute;inset:0;z-index:30;pointer-events:none}
+.lnv.full{pointer-events:auto}
+.lnv-s{position:sticky;top:0;height:100vh;height:100svh}
+.lnv-s::before{content:"";position:absolute;inset:0;background:rgba(26,26,26,.82);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);opacity:var(--vk,0);pointer-events:none}
+.lnv:not(.live) .lnv-s::before{opacity:0}
+.lnv-v{position:absolute;left:var(--fl,0);top:var(--ft,0);width:var(--fw,100%);height:var(--fh,100%);overflow:hidden;visibility:hidden;background:#0b0710;border-radius:var(--rx,28px)/var(--ry,28px);transform-origin:0 0;transform:translate3d(var(--x,0px),var(--y,0px),0) scale(var(--sx,1),var(--sy,1));will-change:transform;-webkit-backface-visibility:hidden;backface-visibility:hidden}
+.lnv.live .lnv-v{visibility:visible}
+.lnv-v video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(var(--ix,1),var(--iy,1));will-change:transform}
+.lnv-v::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 70%,rgba(0,0,0,.22));opacity:var(--k,0);pointer-events:none}
+.ln-acts{position:absolute;left:50%;top:var(--at,90%);z-index:3;display:flex;align-items:center;gap:10px;white-space:nowrap;opacity:0;pointer-events:none;transform:translate(-50%,10px);transition:opacity .35s,transform .45s cubic-bezier(.2,.7,.2,1)}
+.lnv.full .ln-acts{opacity:1;pointer-events:auto;transform:translate(-50%,0)}
+.lnv-v.on::after,.lnv.full .lnv-v.on ~ .ln-acts{opacity:0;pointer-events:none}
+.ln-play{display:inline-flex;align-items:center;gap:12px;height:52px;padding:0 24px 0 8px;border:0;border-radius:999px;background:rgba(255,255,255,.94);color:#141414;font-family:inherit;font-size:16px;font-weight:500;cursor:pointer;box-shadow:0 10px 24px -12px rgba(0,0,0,.45);transition:transform .2s,background .2s}
+.ln-play:hover{background:#fff;transform:scale(1.04)}
+.ln-play i{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:rgb(var(--beam));color:#fff}
+.ln-play i svg{width:13px;height:13px;margin-left:2px}
+.ln-wl{height:52px;padding:0 24px;font-size:16px;background:#141414;color:#fff;border-color:rgba(255,255,255,.16)}
+.ln-hint{position:absolute;left:50%;top:var(--hy,90%);display:flex;align-items:center;gap:8px;font-size:15px;color:var(--muted);opacity:0;pointer-events:none;transform:translateX(-50%);transition:opacity .35s}
+.ln-hint svg{width:15px;height:15px;animation:lnbob 1.6s ease-in-out infinite}
+.lnv.full .ln-hint{opacity:1;pointer-events:auto}
+@keyframes lnbob{50%{transform:translateY(3px)}}
+/* Il video mandato da nello nella chat */
+.wa-vbub{padding:4px 4px 7px}
+.wa-vbub p{padding:6px 9px 0}
+.wa-vth{position:relative;width:236px;max-width:100%;aspect-ratio:16/10;overflow:hidden;border-radius:15px;background:#0b0710}
+.wa-vth video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.wa-vp{position:absolute;left:50%;top:50%;display:grid;place-items:center;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;background:rgba(0,0,0,.42);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#fff}
+.wa-vp svg{width:16px;height:16px;margin-left:2px}
+.wa-vd{position:absolute;left:8px;bottom:7px;display:flex;align-items:center;gap:5px;font-size:11.5px;font-weight:500;line-height:1;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.4)}
+.wa-vd svg{width:14px;height:9px}
+@media (max-width:699.98px){
+  .lnv-s::before{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(26,26,26,.96)}
+  .ln-acts{flex-direction:column-reverse;gap:8px;width:calc(100% - 32px)}
+  .ln-acts>*{width:100%;justify-content:center}
+  .ln-play,.ln-wl{height:48px}
+}
+/* Movimento ridotto: niente volo, il video sta fermo sotto l'apertura */
+@media (prefers-reduced-motion:reduce){
+  .hx{height:auto}
+  .hx>.hero{position:relative;top:auto}
+  .lnv{position:relative;pointer-events:auto}
+  .lnv-s{position:relative;height:auto;padding:0 16px 24px}
+  .lnv-s::before,.ln-hint{display:none}
+  .lnv-v{position:relative;visibility:visible;width:min(1240px,100%);height:auto;aspect-ratio:16/9;margin:0 auto;border-radius:28px;transform:none}
+  .lnv-v video{transform:none}
+  .ln-acts{position:static;justify-content:center;margin:16px auto 0;opacity:1;pointer-events:auto;transform:none}
+}
 </style>
 </head>
 <body>
@@ -526,6 +577,7 @@ html{overflow-x:clip;}
 </div>
 </header>
 <main>
+<div class="hx" id="hx">
 <section class="hero inner">
 <div class="hero-copy">
 <p class="pill hero-line" style="--i:0"><b>AI</b> IL COLLABORATORE AI PER RISTORATORI</p>
@@ -561,6 +613,13 @@ html{overflow-x:clip;}
 <p class="caption">Simulazione illustrativa · Le funzionalità saranno sviluppate e attivate progressivamente.</p>
 </div>
 </section>
+<!-- IL VIDEO: esce dal fumetto della chat mentre si scorre (vedi lo script «Il video di nello») -->
+<div aria-label="Il video di nello" class="lnv" id="video" role="region"><div class="lnv-s">
+<div class="lnv-v" id="lnCard"><video id="lnVid" muted loop playsinline poster="video/nello-lancio.jpg" preload="metadata"><source media="(max-width:699.98px)" src="video/nello-lancio-720.mp4" type="video/mp4"><source src="video/nello-lancio.mp4" type="video/mp4"></video></div>
+<div class="ln-acts"><button class="ln-play" id="lnPlay" type="button"><i><svg aria-hidden="true" viewbox="0 0 10 10"><path d="M2 1l7 4-7 4z" fill="currentColor"></path></svg></i>Guarda con l’audio</button><a class="btn ln-wl" href="#accesso">Richiedi l’accesso a nello <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></div>
+<a class="ln-hint" href="#problema">Scopri cosa fa nello <svg aria-hidden="true" viewbox="0 0 16 16"><path d="M8 3v10M4 9l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+</div></div>
+</div>
 <!-- IL PROBLEMA -->
 <section class="section net" id="problema">
 <div class="net-stage">
@@ -787,6 +846,9 @@ html{overflow-x:clip;}
     marks.forEach(function(m,i){m.classList.toggle('on',i===on)});
   }
 
+  /* La chat nel telefono dice al video quando è finita (senza telefono non c'è niente da aspettare) */
+  var demo={done:function(){return true}};
+
   /* Demo nel telefono: una sola chat WhatsApp con nello, dagli ordini ai clienti.
      Si muove solo quando il telefono è sullo schermo. Testi, nomi e numeri sono esempi illustrativi. */
   (function(){
@@ -820,7 +882,8 @@ html{overflow-x:clip;}
       {tap:'Sì, preparalo',t:'22:39'},
       {in:['Ecco la bozza:'],card:quote('Ciao! È un po’ che non ci vediamo. Ci farebbe piacere riaverti a cena: ti teniamo un tavolo?'),after:'La mando solo a chi ha dato il consenso.',btns:['Invia','Modifica'],t:'22:39'},
       {tap:'Invia',t:'22:40'},
-      {in:['Fatto ✓ L’ho mandata ai <b>31 clienti</b> che hanno dato il consenso.'],t:'22:40'}
+      {in:['Fatto ✓ L’ho mandata ai <b>31 clienti</b> che hanno dato il consenso.'],t:'22:40'},
+      {in:['Ecco come lavoro.'],video:'0:52',t:'22:41'}
     ];
     /* I primi K passi sono già scritti all'apertura: la chat non è mai vuota e l'animazione continua da lì. */
     var K=4;
@@ -845,11 +908,14 @@ html{overflow-x:clip;}
         +'<p class="wa-said">'+s.said+'</p><div class="wa-vfoot">'+s.voice+'</div>'+meta(s.t,true)+'</div>');
     }
     function reply(s){
-      var h=s.in.map(function(x){return '<p>'+x+'</p>'}).join('')+(s.card||'')+(s.after?'<p>'+s.after+'</p>':'');
+      var h=(s.video?'<div class="wa-vth" id="vth"><video autoplay loop muted playsinline poster="video/nello-lancio.jpg" preload="metadata" src="video/nello-lancio-720.mp4"></video>'
+        +'<span class="wa-vp"><svg aria-hidden="true" viewBox="0 0 10 10"><path d="M2.5 1.3l6 3.7-6 3.7z" fill="currentColor"/></svg></span>'
+        +'<span class="wa-vd"><svg aria-hidden="true" viewBox="0 0 16 10"><rect x=".5" y=".5" width="10" height="9" rx="2" fill="currentColor"/><path d="M11.5 3.5l4-2.2v7.4l-4-2.2z" fill="currentColor"/></svg>'+s.video+'</span></div>':'')
+        +s.in.map(function(x){return '<p>'+x+'</p>'}).join('')+(s.card||'')+(s.after?'<p>'+s.after+'</p>':'');
       if(s.btns)h+='<div class="wa-btns">'+s.btns.map(function(b){return '<span>'+b+'</span>'}).join('')+'</div>';
       /* L'ora va in fondo a destra: sull'ultima riga di testo se c'è posto, altrimenti su una riga sua */
       h=h.slice(-4)==='</p>'?h.slice(0,-4)+SP+'</p>':h+'<div class="wa-end"></div>';
-      return '<div class="wa-bubble">'+h+meta(s.t)+'</div>';
+      return '<div class="wa-bubble'+(s.video?' wa-vbub':'')+'">'+h+meta(s.t)+'</div>';
     }
     function read(){Array.prototype.forEach.call(log.querySelectorAll('.wa-msg.out:not(.read)'),function(m){m.classList.add('read')})}
     function show(s){
@@ -868,9 +934,23 @@ html{overflow-x:clip;}
     reset();
     if(calm){C.forEach(show);read();log.scrollTop=0;return}
 
-    var visible=false;
+    var visible=false,at,stop=false,done=false,T=[],STOP={};
     function sleep(ms){return new Promise(function(r){setTimeout(r,ms)})}
-    async function wait(ms){await sleep(ms);while(!visible||document.hidden)await sleep(400)}
+    async function wait(ms){await sleep(ms);while(!visible||document.hidden)await sleep(400);if(stop)throw STOP}
+
+    /* Quando il visitatore scorre la pagina la chat corre alla fine, come su Lexroom: hurry scrive i passi
+       che mancano uno ogni 200 ms, finish tutti subito. L'ultimo passo è il video, che poi esce dal telefono. */
+    function rush(from,gap){
+      stop=true;T.forEach(clearTimeout);T=[];
+      reset();log.classList.remove('fade');C.slice(0,from).forEach(show);
+      /* I messaggi già scritti ricompaiono fermi, senza rifare l'entrata: la chat non lampeggia */
+      Array.prototype.forEach.call(log.children,function(e){e.style.animation='none'});
+      if(from>=C.length){done=true;return}
+      C.slice(from).forEach(function(s,k){T.push(setTimeout(function(){show(s);if(from+k===C.length-1)done=true},gap*(k+1)))});
+    }
+    demo.done=function(){return done};
+    demo.hurry=function(){if(!stop)rush(at,200)};
+    demo.finish=function(){rush(C.length,0)};
     async function type(t){
       bar.classList.add('wa-typing');text.classList.add('on');
       for(var i=1;i<=t.length;i++){
@@ -895,23 +975,24 @@ html{overflow-x:clip;}
       var m=add('in','<div class="wa-bubble"><span class="wa-dots" aria-hidden="true"><i></i><i></i><i></i></span></div>');
       await wait(Math.min(1700,700+size*9));
       state.textContent='online';
-      grow(function(){m.innerHTML=reply(s)});
+      grow(function(){m.innerHTML=reply(s)});at++;
       await wait(Math.min(4200,900+size*24));
     }
     async function play(){
-      for(;;){
-        reset();C.slice(0,K).forEach(show);
+      try{for(;;){
+        /* at = passi già scritti per intero: se il visitatore scorre, la corsa riparte da lì */
+        reset();C.slice(0,K).forEach(show);at=K;
         await wait(800);
         for(var i=K;i<C.length;i++){
           var s=C[i];
-          if(s.out){await type(s.out);sent(s.out,s.t);await wait(300)}
-          else if(s.voice){await record(s.voice);voice(s);await wait(300)}
-          else if(s.tap){var b=last(s.tap);b.classList.add('on');await wait(420);b.classList.remove('on');b.parentNode.classList.add('used');sent(s.tap,s.t);await wait(300)}
+          if(s.out){await type(s.out);sent(s.out,s.t);at++;await wait(300)}
+          else if(s.voice){await record(s.voice);voice(s);at++;await wait(300)}
+          else if(s.tap){var b=last(s.tap);b.classList.add('on');await wait(420);b.classList.remove('on');b.parentNode.classList.add('used');sent(s.tap,s.t);at++;await wait(300)}
           else await answer(s);
         }
         await wait(9000);
         log.classList.add('fade');await wait(600);log.classList.remove('fade');
-      }
+      }}catch(e){if(e!==STOP)throw e}
     }
     if('IntersectionObserver' in window){
       new IntersectionObserver(function(es){
@@ -919,6 +1000,63 @@ html{overflow-x:clip;}
       },{threshold:[0,.35]}).observe(phone);
     }else visible=true;
     play();
+  })();
+
+  /* Il video di nello esce dal telefono mentre si scorre, come su Lexroom.
+     L'apertura resta ferma per altri 125svh. Nei primi 0,9 schermi di scorrimento il riquadro passa dal fumetto
+     della chat al centro dello schermo, poi compaiono i pulsanti. Tornando su, il video rientra nel fumetto. */
+  (function(){
+    var hx=$('#hx'),hero=$('#hx > .hero'),stage=$('#video'),card=$('#lnCard'),vid=$('#lnVid'),acts=$('.ln-acts');
+    if(!stage)return;
+    var watch=function(){card.classList.add('on');vid.loop=false;vid.muted=false;vid.currentTime=0;vid.controls=true;vid.play()};
+    var mute=function(){card.classList.remove('on');vid.controls=false;vid.muted=true;vid.loop=true;vid.play()};
+    $('#lnPlay').addEventListener('click',watch);
+    vid.addEventListener('ended',mute);
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+
+    /* Altezza dello schermo senza la barra del browser del telefono, che appare e sparisce */
+    var probe=document.createElement('div');
+    probe.style.cssText='position:fixed;top:0;left:0;width:1px;height:100lvh;visibility:hidden;pointer-events:none';
+    document.body.appendChild(probe);
+    var vh=function(){return Math.max(innerHeight,probe.offsetHeight||0)};
+    var size=function(){var h=hero.offsetHeight;hx.style.setProperty('--hh',h+'px');hx.style.setProperty('--ht',Math.min(0,vh()-h)+'px')};
+    var ease=function(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2};
+    var raf=0,live=false;
+    function frame(){
+      raf=0;
+      var start=hx.getBoundingClientRect().top+scrollY+hero.offsetHeight-vh(),d=Math.max(0,Math.min(1,(scrollY-start)/(.9*innerHeight)));
+      if(!demo.done()){if(d>0)demo.finish();else if(scrollY>80)demo.hurry()}
+      var th=$('#vth');
+      if(d<=0||!th){
+        if(live){
+          stage.classList.remove('live','full');live=false;
+          /* il fumetto riparte; se nel frattempo si torna giù e lo si ferma, play() viene interrotto: non è un errore */
+          th.querySelector('video').play().catch(function(){});
+          if(card.classList.contains('on'))mute();
+        }
+        return;
+      }
+      /* Dove arriva il riquadro: 16:9 al centro. Sul telefono resta 16:9 (le scritte del video sono larghe) e i pulsanti vanno sotto. */
+      var tv=th.querySelector('video'),r=th.getBoundingClientRect(),W=innerWidth,H=innerHeight,x=ease(d),small=W<700,
+          side=small?16:Math.max(24,.04*W),pad=small?72:84,w=Math.min(1240,W-2*side),h=9*w/16,ah=acts.offsetHeight;
+      if(h>H-2*pad){h=H-2*pad;w=16*h/9}
+      var left=(W-w)/2,top=small?Math.max(pad,(H-h-16-ah)/2):(H-h)/2,
+          at=small?top+h+16:top+h-Math.min(40,Math.max(20,.045*h))-ah;
+      if(!live){stage.classList.add('live');live=true;vid.currentTime=tv.currentTime;vid.play();tv.pause()}
+      var sx=(r.width+(w-r.width)*x)/w,sy=(r.height+(h-r.height)*x)/h,rad=15*(1-x)+28*x,big=Math.max(sx,sy),cs=card.style,ss=stage.style;
+      ss.setProperty('--vk',x.toFixed(3));ss.setProperty('--at',at+'px');ss.setProperty('--hy',(small?at+ah+14:top+h+18)+'px');
+      cs.setProperty('--fl',left+'px');cs.setProperty('--ft',top+'px');cs.setProperty('--fw',w+'px');cs.setProperty('--fh',h+'px');
+      cs.setProperty('--x',(r.left+(left-r.left)*x-left).toFixed(1)+'px');cs.setProperty('--y',(r.top+(top-r.top)*x-top).toFixed(1)+'px');
+      cs.setProperty('--sx',sx.toFixed(4));cs.setProperty('--sy',sy.toFixed(4));
+      cs.setProperty('--rx',(rad/sx).toFixed(2)+'px');cs.setProperty('--ry',(rad/sy).toFixed(2)+'px');
+      cs.setProperty('--ix',(big/sx).toFixed(4));cs.setProperty('--iy',(big/sy).toFixed(4));cs.setProperty('--k',x.toFixed(3));
+      stage.classList.toggle('full',d>.9);
+      if(d<.6&&card.classList.contains('on'))mute();
+    }
+    /* L'apertura cambia altezza quando arriva il carattere Inter: si rimisura ogni volta (e la prima volta, all'avvio) */
+    new ResizeObserver(function(){size();frame()}).observe(hero);
+    addEventListener('resize',function(){size();frame()});
+    addEventListener('scroll',function(){if(!raf)raf=requestAnimationFrame(frame)},{passive:true});
   })();
 
   /* Modulo a passi della richiesta di accesso.
